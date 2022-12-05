@@ -8,7 +8,7 @@
 
 ### Page title
 
-```html
+<!-- ```html
 <h1 class="title">Text</h1>
 ```
 
@@ -18,7 +18,7 @@
   text-align: center;
   text-transform: uppercase;
 }
-```
+``` -->
 
 ### EventBoard
 
