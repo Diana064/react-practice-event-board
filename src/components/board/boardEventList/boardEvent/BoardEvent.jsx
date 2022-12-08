@@ -1,4 +1,4 @@
-import css from './BoardEvent.module.css';
+import PropTypes from 'prop-types';
 import {
   FaMapMarkerAlt,
   FaUserAlt,
@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import { formatEventStart } from '../../../utils/time.js';
 import { formatEventDuration } from '../../../utils/time.js';
+import { Event, Title, Info, Icon, Chip } from './BoardEvent.styled';
 
 export const BoardEvent = ({
   name,
@@ -19,33 +20,39 @@ export const BoardEvent = ({
   const duration = formatEventDuration(start, end);
 
   return (
-    <div className={css.event}>
-      <h2 className={css.title}>{name}</h2>
-      <p className={css.info}>
-        <i className={css.icon}>
-          <FaMapMarkerAlt />
-        </i>
+    <Event>
+      <Title>{name}</Title>
+      <Info>
+        <FaMapMarkerAlt />
+
         {location}
-      </p>
-      <p className={css.info}>
-        <i className={css.icon}>
-          <FaUserAlt />
-        </i>
+      </Info>
+      <Info>
+        <FaUserAlt />
+
         {speaker}
-      </p>
-      <p className={css.info}>
-        <i className={css.icon}>
-          <FaCalendarAlt />
-        </i>
+      </Info>
+      <Info>
+        <FaCalendarAlt />
+
         {formattedStart}
-      </p>
-      <p className={css.info}>
-        <i className={css.icon}>
-          <FaClock />
-        </i>
+      </Info>
+      <Info>
+        <FaClock />
+
         {duration}
-      </p>
-      <span className={`${css.chip} ${css[type]}`}>{type}</span>
-    </div>
+      </Info>
+      <Chip eventtype={type}>{type}</Chip>
+    </Event>
   );
+};
+BoardEvent.propTypes = {
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  speaker: PropTypes.string.isRequired,
+  time: PropTypes.exact({
+    start: PropTypes.string.isRequired,
+    end: PropTypes.string.isRequired,
+  }),
+  type: PropTypes.string.isRequired,
 };

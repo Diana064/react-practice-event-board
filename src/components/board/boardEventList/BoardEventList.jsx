@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { BoardEvent } from './boardEvent/BoardEvent';
-import css from './BoardEventList.module.css';
+import { Board } from './BoardEvent.styled';
 export const BoardEventList = ({ events }) => {
   return (
-    <div className={css.eventBoard}>
+    <Board>
       {events.map(({ name, location, speaker, time, type }) => (
         <BoardEvent
           key={name}
@@ -13,6 +14,17 @@ export const BoardEventList = ({ events }) => {
           type={type}
         />
       ))}
-    </div>
+    </Board>
   );
+};
+BoardEventList.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired,
+      speaker: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      time: PropTypes.object,
+    })
+  ),
 };
