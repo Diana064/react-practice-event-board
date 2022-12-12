@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import { formatEventStart } from '../../../utils/time.js';
 import { formatEventDuration } from '../../../utils/time.js';
-import { Event, Title, Info, Icon, Chip } from './BoardEvent.styled';
+import { Event, Title, Info, Chip } from './BoardEvent.styled';
 
 export const BoardEvent = ({
   name,
