@@ -50,7 +50,7 @@ export const Chip = styled.span`
       case 'vip':
         return theme.colors.red;
       default:
-        return ' #000;';
+        return theme.colors.black;
     }
   }};
 `;
